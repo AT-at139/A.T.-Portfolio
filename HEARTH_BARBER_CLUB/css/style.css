@@ -1,0 +1,1031 @@
+@charset "UTF-8";
+
+/* bese */
+header{
+    background: rgba(240, 240, 240, 0.2);
+    backdrop-filter: blur(6px);
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* ← 他の要素より前に出す */
+}
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+  background-color: #FAF7F2;
+}
+
+.menu-btn {
+  position: absolute;
+  right: 20px;   /* ← 右上に配置 */
+  top: 20px;
+  cursor: pointer;
+  z-index: 9000;
+}
+.menu-btn span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #000;
+  margin: 6px 0;
+  transition: .4s;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: #111;
+  transition: .5s;
+}
+.nav_img img{
+    width: 120px;
+    height: auto;
+    display: block;
+}
+
+.nav ul li {
+  color: #fff;
+  opacity: 0;               /* 最初は透明 */
+  transform: translateY(20px); /* 少し下に配置 */
+  transition: 1.2s ease;     /* ゆっくり浮かぶ */
+  list-style-type: none;
+  text-align: center;
+  font-size: 35px;
+  padding: 20px;
+
+  /* 文字アニメーション */
+  letter-spacing: 0px;
+}
+/* ホバー時に文字間隔を広げる */
+.nav ul li:hover {
+  letter-spacing: 4px; /* ← 好きな幅に調整 */
+  transition: 0.4s ease; /* ← スムーズに広がる */
+}
+
+.sns_header ul {
+  display: flex;
+  align-items: center; /* 縦位置を揃える（任意） */
+}
+.sns_header ul li{
+    display: block;
+    margin: 0 auto;
+}
+/* メニューが開いたとき */
+.nav.open ul li {
+  opacity: 1;               /* 白く表示 */
+  transform: translateY(0); /* 元の位置へ */
+}
+.nav.open {
+  right: 0;
+}
+.menu-btn.open span {
+  background: #fff; /* ← ここで白に変える */
+}
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+/* 順番にフワッと浮かび上がる */
+.nav.open ul li:nth-child(1) { transition-delay: .1s; }
+.nav.open ul li:nth-child(2) { transition-delay: .2s; }
+.nav.open ul li:nth-child(3) { transition-delay: .3s; }
+.nav.open ul li:nth-child(4) { transition-delay: .4s; }
+.nav.open ul li:nth-child(5) { transition-delay: .5s; }
+.nav.open ul li:nth-child(6) { transition-delay: .6s; }
+
+.header_logo_div{
+    display: block;
+    text-align: center;
+}
+.header_logo_div img{
+    width: 200px;
+    height: 100%;
+}
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block; /* クリック範囲を広げる */
+}
+.nav ul li a:hover {
+  color: #C8A45D; /* ゴールド */
+  transition: .3s;
+}
+/* フォント */
+.nav{
+    font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.midashi{
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  margin: 30px 0 40px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+main {
+  padding-top: 80px;
+}
+/* フッター */
+footer{
+    background-color: #111;
+    padding: 60px 0;           /* 上下にゆったり余白 */
+  text-align: center;
+}
+.footer-icons{
+    display: flex;
+    justify-content: center; /* ← 全体を中央に */
+  gap: 20px;
+  margin-bottom: 20px;
+}
+footer p {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 2px;       /* 高級感UP */
+}
+/* snsアイコン */
+.sns_icon img{
+  height: 32px;
+  width: 32px;
+}
+/* iPhone SE 対応 */
+@media screen and (max-width: 380px) {
+
+  .nav ul li {
+    font-size: 26px;
+    padding: 14px;
+  }
+
+  .nav_img img {
+    width: 90px;
+  }
+
+  .sns_header ul {
+    gap: 10px;
+  }
+
+  .nav {
+    overflow-y: auto; /* ← これで絶対に見切れない */
+  }
+}
+/* ////////////////////////////// top.html /////////////////////////////////////////// */
+
+.fade-slider {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: #000; /* ← 透明PNGでも黒背景で見える */
+}
+
+.fade-slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.fade-slider img.active {
+  opacity: 1;
+}
+
+/* ← ここが h2 を画像の上に置くコード */
+.slider-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 48px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  z-index: 10;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+.top_ABOUTUS h1{
+  text-align: center;
+  color: 111;
+  font-size: 40px;
+  margin: 20px 0;
+}
+
+.top_ABOUTUS p{
+  color: #333;
+  font-size: 20px;
+  margin: 40px 20px;
+}
+.ABOUTUS_btn{
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  transition: 0.3s;
+  font-family: 'Playfair Display', serif;
+}
+.ABOUTUS_btn:hover{
+  color: #C8A45D;
+}
+.ABOUTUS_btn_div{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+/* ////////////////////////////// price.html /////////////////////////////////////////// */
+
+.price_item {
+  margin-bottom: 40px;
+}
+
+.price_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+}
+
+.menu_name {
+  font-weight: 600;
+}
+
+.menu_price {
+  font-weight: 600;
+}
+
+.menu_desc {
+  max-width: 600px;
+  margin: 10px auto 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.attention_price {
+  max-width: 600px;
+  margin: 5px auto 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.price_img{
+  margin: 20px 20px;
+}
+.price_img img{
+  height: 70hz;
+  width: 100%;
+}
+/* ////////////////////////////// staff.html /////////////////////////////////////////// */
+.staff {
+  width: 300px;                 /* カード幅を統一 */
+  margin: 0 auto;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.staff_img img {
+  width: 100%;
+  height: 350px;             /* ← ここが重要！写真の高さを固定 */
+  object-fit: cover;         /* 写真を綺麗にトリミング */
+  border-radius: 6px;        /* 角を少し丸く */
+}
+
+.staff_name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-top: 15px;
+  letter-spacing: 2px;
+  color: #111;
+}
+
+.staff_role {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.staff_comment {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.7;
+  margin-top: 10px;
+}
+.staff_btn{
+display: inline-block;
+  padding: 12px 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  width: 80%;
+  margin: 0 auto;
+}
+.staff_btn:hover{
+  color: #C8A45D;
+}
+.staff_btn_div{
+  margin-top: 15px;
+  text-align: center;
+}
+/* ////////////////////////////// access.html /////////////////////////////////////////// */
+.access{
+  margin: 10px 50px;
+}
+.access_img img {
+  width: 100%;
+  height: 250px;             /* ← ここが重要！写真の高さを固定 */
+  object-fit: cover;         /* 写真を綺麗にトリミング */
+  border-radius: 6px;        /* 角を少し丸く */
+}
+.access_word1 p{
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin: 10px auto;
+  color: #333;
+}
+
+.access_btn{
+  display: inline-block;
+  padding: 14px 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transition: 0.3s;
+  font-family: 'Playfair Display', serif;
+  white-space: nowrap;
+}
+.access_btn:hover{
+  color: #C8A45D;
+}
+.access_btn_1{
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
+.access_2{
+  margin: 10px 50px;
+  margin-top: 30px;
+} 
+.access_word2_h2{
+  color: #111;
+  font-size: 25px;
+   font-family: 'Playfair Display', serif;
+}
+.access_word2 p{
+  margin: 15px auto;
+  font-size: 15px;
+}
+
+/* ////////////////////////////// about.html /////////////////////////////////////////// */
+.about_midashi h1{
+  margin: 30px 0 10px;
+  margin-left: 20px;
+  text-align: left;
+}
+.about_midashi_div p{
+  margin: 0px 0 10px;
+  margin-left: 20px;
+  text-align: left;
+  font-size: 18px;
+}
+.about_hearth_h2{
+  color: #111;
+  font-size: 28px;
+   font-family: 'Playfair Display', serif;
+   letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.about_hearth_p{
+  color: #333;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.about_hearth{
+  margin: 30px 20px;
+}
+.about_hearth_div{
+  margin-bottom: 35px;
+}
+.hearth_philosophy_h2{
+  font-size: 40px;
+  font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+  text-align: center;
+  margin: 60px 0 40px;
+}
+.hearth_philosophy_div{
+  margin: 30px 20px;
+
+}
+.hearth_philosophy_h3{
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+.hearth_philosophy_p{
+  font-size: 16px;
+  line-height: 1.9;
+}
+.hearth_philosophy_section{
+  position: relative;
+  padding: 20px 20px 60px;
+  background-image: url(../img/philosophy.jpg);
+  background-size: cover;
+  background-position: 80% 20%;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.hearth_philosophy_section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35); /* ← 明るい背景なら必須 */
+  z-index: 1;
+}
+
+.hearth_philosophy_section * {
+  position: relative;
+  z-index: 2;
+}
+.important_section{
+  margin-top: 80px;
+  color: #fff;
+
+}
+.important_h2{
+  font-size: 25px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0px 0 40px;
+  padding-top: 50px;
+}
+.important_div_p{
+  font-size: 17px;
+  line-height: 1.9;
+  text-align: left;
+  width: 80%;        /* ← 横幅を少し狭くする */
+  max-width: 500px;  /* ← 読みやすい幅に制限 */
+  margin: 0 auto;    /* ← セクション中央に配置 */
+}
+.important_p {
+  font-size: 19px;
+  line-height: 3.0;
+}
+.important_word{
+  position: relative;
+  z-index: 2;
+}
+.important_slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35); /* ← 透明度調整OK */
+  z-index: 1;
+}
+/* アニメーション */
+.important_slider {
+  position: relative;
+  width: 100%;
+  height: 500px; /* 必要に応じて調整 */
+  overflow: hidden;
+}
+
+.important_slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.important_slider img.active {
+  opacity: 1;
+}
+.gallery_section h2{
+  margin-top: 60px;
+}
+.gallery_h2{
+   font-size: 25px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-top: 20px;
+}
+.gallery-wrapper {
+  padding: 24px 16px;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+.darkfade {
+  filter: brightness(60%);
+  opacity: 0;
+}
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.gallery-thumbs img {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gallery-thumbs img.active {
+  opacity: 1;
+  border: 2px solid #C8A45D; /* ゴールドで選択中を強調 */
+}
+
+
+/* ////////////////////////////// booking.html /////////////////////////////////////////// */
+
+.midashi_booking p{
+ font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+  
+}
+.staff_btn_div{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 20px 32px;
+  align-items: stretch; /* ← 左揃えで自然に見せる */
+}
+.booking_btn{
+display: inline-block;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+   width: 100%;
+  text-align: center;
+  padding: 14px 0;
+  font-size: 15px;
+  border-radius: 6px;
+}
+.booking_btn:hover{
+  color: #C8A45D;
+}
+.booking_btn_div{
+  text-align: left;
+  margin-top: 15px;
+}
+.booking_img img{
+  width: 100%;
+  height: 200%;             /* ← ここが重要！写真の高さを固定 */
+  object-fit: cover;         /* 写真を綺麗にトリミング */
+  border-radius: 6px;        /* 角を少し丸く */
+  padding: 20px;
+
+}
+
+/*////////////////////////////////// PC版//////////////////////// */
+@media screen and (min-width: 768px){
+
+
+  /*////////////////////////////////// ハンバーガーメニュー//////////////////////// */
+header .humburger_menu {
+    display: flex;
+    justify-content: space-between; /* ロゴ左・メニュー右 */
+    align-items: center;
+    padding: 20px 40px;
+  }
+
+  /* ハンバーガーはPCでは非表示 */
+  .menu-btn {
+    display: none;
+  }
+
+  /* nav を横並びのメニューに変える */
+  .nav {
+    position: static;     /* 固定解除 */
+    background: transparent;
+    width: auto;
+    height: auto;
+    right: auto;
+    overflow: visible;
+  }
+
+  .nav ul {
+    display: flex;        /* ← 横並びにする */
+    gap: 60px;
+    align-items: center;
+  }
+
+  .nav ul li {
+    opacity: 1;           /* PCではアニメ不要 */
+    transform: none;
+    font-size: 18px;
+    padding: 0;
+  }
+
+  .nav ul li a {
+    color: #111;          /* PCでは黒文字 */
+  }
+
+  .nav ul li a:hover {
+    color: #C8A45D;
+  }
+.sns_header{
+  display: none;
+}
+  .nav_img {
+    display: none;
+  }
+  /*////////////////////////////////// top.html//////////////////////// */
+  .fade-slider{
+    margin-top: 30px;
+     position: relative;
+    width: 100%;
+    height: 100vh;          /* ← 画面の高さに合わせる */
+    overflow: hidden;  
+  }
+
+  .top_ABOUTUS > div {
+    max-width: 700px;   /* 読みやすい幅に制限 */
+    margin: 0 auto;     /* ブロックを中央に配置 */
+    text-align: center;   /* 文字は左揃え */
+    padding: 0 20px;    /* スマホでも余白を確保 */
+}
+/*////////////////////////////////// about.html//////////////////////// */
+ .about_midashi h1 {
+    margin: 30px 0 10px;
+    text-align: center;   /* ← 左寄せを解除 */
+    margin-left: 0;       /* ← 左余白を消す */
+  }
+
+  .about_midashi_div p {
+    margin: 0px 0 10px;
+    text-align: center;   /* ← 左寄せを解除 */
+    margin-left: 0;       /* ← 左余白を消す */
+  }
+
+  .about_midashi {
+    display: flex;
+    justify-content: center; /* ← ブロックごと中央に */
+  }
+
+  .about_midashi_div {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+  }
+.about_hearth {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* ← これが中央寄せの決め手 */
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.about_hearth > div {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+.hearth_philosophy_section {
+  position: relative;
+  padding: 60px 20px 80px;
+  background-image: url(../img/philosophy.jpg);
+  background-size: cover;
+  background-position: 80% 20%;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center; /* ← 全体を中央揃え */
+}
+.hearth_philosophy_div {
+  max-width: 700px;   /* ← コラム幅を統一 */
+  width: 100%;
+  margin: 40px auto;  /* ← 中央に配置 */
+}
+.hearth_philosophy_h3 {
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px; /* ← 統一された余白 */
+}
+
+.hearth_philosophy_p {
+  font-size: 18px;
+  line-height: 1.9;
+  margin: 0; /* ← 余白をリセット */
+}
+.hearth_philosophy_section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
+
+.hearth_philosophy_section * {
+  position: relative;
+  z-index: 2;
+}
+.important_section {
+    margin-top: 100px;
+  }
+.important_h2{
+  font-size: 35px;
+}
+.important_p{
+  padding: 0;
+  text-align: center;
+  font-size: 24px;
+}
+.gallery-wrapper{
+  width: 100%;
+  max-width: 900px;   /* ← PCでの横幅を制限 */
+  margin: 0 auto;     /* ← 中央に配置 */
+  padding: 20px;
+}
+.gallery-main {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* ← 写真の比率を統一 */
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* ← 写真を綺麗にトリミング */
+}
+.gallery-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.gallery-thumbs img {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  opacity: 0.6;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: opacity 0.3s;
+}
+
+.gallery-thumbs img.active {
+  opacity: 1;
+  border: 2px solid #fff;
+}
+.gallery_section h2{
+  font-size: 40px;
+  margin-top: 100px;
+}
+/*////////////////////////////////// price.html//////////////////////// */
+.midashi{
+  margin: 0;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+.menu_name{
+  font-size: 21px;
+  font-weight: 600;
+}
+.menu_price{
+  font-size: 21px;
+  font-weight: 600;
+}
+.menu_desc{
+  font-size: 16px;
+  line-height: 1.9;
+}
+.price_img {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+.price_img img {
+  width: 100%;
+  height: auto; 
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+/*////////////////////////////////// access.html//////////////////////// */
+.access_img img {
+  width: 100%;
+  height: 80vh;
+  object-fit: contain; /* ← 全体を表示 */
+  border-radius: 6px;
+  display: block;
+}
+.access_word1{
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  line-height: 1.8;
+}
+.access_word1 p {
+  margin: 10px 0;
+  line-height: 1.8;
+}
+.access_btn_1{
+ display: flex;
+  justify-content: center;
+  gap: 20px;   /* ボタン同士の間隔 */
+  margin: 40px auto 60px;
+}
+.access_word2 {
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.access_word2_h2{
+  text-align: center;
+  font-size: 28px;
+}
+.access_word2 p{
+  font-size: 16px;
+  text-align: center;
+}
+/*////////////////////////////////// booking.html//////////////////////// */
+.midashi_booking {
+    text-align: center;
+    padding: 80px 20px 40px;
+  }
+
+  .midashi_booking p {
+    font-size: 16px;
+    line-height: 2;
+    max-width: 700px;
+    margin: 10px auto 0;
+  }
+  .staff_btn_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2列 */
+    gap: 20px;
+    max-width: 600px;
+    margin: 40px auto 60px;
+  }
+
+  .booking_btn {
+    padding: 16px 0;
+    font-size: 19px;
+  }
+  .booking_img {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+  .booking_img img {
+     width: 100%;
+  height: auto; 
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+  }
+  .tel_btn{
+    display: none;
+  }
+  /*////////////////////////////////// staff.html//////////////////////// */
+  .staff{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 20px;
+  }
+  .staff_section{
+    display: flex;
+    justify-content: center;
+    gap: 40px;        /* カード同士の間隔 */
+    flex-wrap: wrap;  /* 3人以上でも折り返し */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+   .staff_img img {
+    width: 100%;
+     border-radius: 8px;
+    height: auto;        /* ← 画像の縦横比を保つ */
+    object-fit: contain; /* ← 全体を表示 */
+  }
+  .staff_name {
+    font-size: 24px; /* PC は少し大きく */
+    margin-top: 15px;
+    letter-spacing: 2px;
+  }
+
+  .staff_role {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .staff_comment {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 10px;
+  }
+  .staff_btn_div {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+  justify-content: center;
+  }
+
+  .staff_btn {
+    display: inline-block;
+    padding: 14px 40px;        /* ← PCは余白を広めに */
+    border-radius: 4px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* ← 影で立体感 */
+    white-space: nowrap;
+    display: inline-block;
+  width: auto;
+  min-width: 200px;   /* ← 最低幅だけ揃える */
+  text-align: center;
+  white-space: nowrap;
+  }
+
+}
+
+/* 文字のアニメーション */
+.fadeUp {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.fadeUp.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fadeIn {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.fadeIn.show {
+  opacity: 1;
+}
+
+
