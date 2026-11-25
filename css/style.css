@@ -1,0 +1,797 @@
+@charset "utf-8";
+body{
+  background-color: #f7f7f7;
+  font-family: 'Noto Serif JP', serif;
+  color: #333;
+}
+/* ヘッダー */
+header {
+  height: 70px; /* ← 好きな高さに調整 */
+
+  position: fixed;   /* ← スクロールしてもついてくる */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 7000;     /* ← メニューや画像より前に出す */
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* ハンバーガーメニュー */
+.menu-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  z-index: 9000;
+}
+.menu-btn span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #7ec8e3;
+  margin: 6px 0;
+  transition: .4s;
+}
+
+/* メニュー本体（初期状態） */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+ background-color: #f7f7f7;
+
+  opacity: 0;                 /* 透明 */
+  transform: translateY(30px); /* 下に少しずらす */
+  pointer-events: none;        /* 閉じている間はクリック不可 */
+  transition: 1.2s ease;       /* ゆっくり浮かぶ */
+
+  padding-top: 100px;
+}
+/* 開いたとき */
+.nav.open {
+  opacity: 1;                 /* 表示 */
+  transform: translateY(0);   /* 元の位置へ */
+  pointer-events: auto;       /* クリック可能に */
+}
+
+/* メニュー内のリンク */
+.nav a {
+  color: #7ec8e3;
+  font-size: 35px;
+  border-bottom: 2px dotted #7ec8e3;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 30px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.2s ease;
+
+  width: 250px;   /* ← 線の長さをここで調整 */
+  margin: 0 auto; /* ← 中央に配置 */
+  padding-bottom: 10px;
+}
+
+/* 開いたときにふわっと */
+.nav.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Instagram */
+.sns_header img {
+  width: 40px;
+  margin: 40px auto 0;
+  display: block;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.2s ease;
+}
+.sns_header a {
+  border-bottom: none !important;
+}
+.logo_word{
+  font-size: 30px;
+  color: #7ec8e3;
+  font-family: 'Parisienne', cursive;
+}
+.header_logo_div {
+  position: absolute;
+  top: 20px;              /* ← 縦位置はこの数値で調整 */
+  left: 50%;              /* ← 横方向の中央へ */
+  transform: translateX(-50%); /* ← 要素の幅の半分だけ戻す（中央揃え） */
+  text-align: center;
+}
+
+/* 順番にふわっと浮かぶ */
+.nav.open a:nth-child(1) { transition-delay: .2s; }
+.nav.open a:nth-child(2) { transition-delay: .3s; }
+.nav.open a:nth-child(3) { transition-delay: .4s; }
+.nav.open a:nth-child(4) { transition-delay: .5s; }
+
+/* Instagramアイコンも浮かぶ */
+.sns_header img {
+  width: 40px;
+  margin: 40px auto 0;
+  display: block;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.2s ease;
+}
+
+.nav.open .sns_header img {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: .6s;
+}
+/* ハンバーガー → × のアニメーション */
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* indexメイン */
+main{
+  margin-top: 70px;
+}
+.index_hero_img {
+  position: relative; /* ← 文字を重ねるために必須 */
+  width: 100%;
+  height: 100%;       /* 好きな高さに調整可能 */
+  overflow: hidden;
+}
+
+.index_hero_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero_text {
+  position: absolute;
+  top: 50%;              /* 縦中央 */
+  left: 50%;             /* 横中央 */
+  transform: translate(-50%, -50%); /* 完全中央配置 */
+
+  color: #2c3e50;        /* 白文字（海の上で読みやすい） */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* ← 上品な影 */
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: 'Noto Serif JP', serif;
+  text-align: center;
+
+  /* ↓ ここから追加 */
+ background: rgba(200, 225, 255, 0.35);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1.2em 1.8em;
+  border-radius: 12px;
+}
+/* ABOUT セクション全体 */
+.about_section {
+  text-align: center;
+  padding: 100px 20px;   /* 上下の余白をしっかり取る */
+}
+
+/* ABOUT のタイトル */
+.about_title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* 丸アイコン（帽子を入れる部分） */
+.about_icon {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 30px;
+
+  /* 水の膜のような透明感（あなたの世界観に合わせて） */
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.about_icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 名前 */
+.about_name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+/* テキスト */
+.about_text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  line-height: 2;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.about_text_a{
+  display: block;
+  margin-bottom: 20px;
+}
+/* セクション全体 */
+.works_section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* タイトル */
+.works_title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+/* カード全体 */
+.works_card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  
+}
+
+/* 写真部分 */
+.works_img {
+  width: 100%;
+  height: auto;
+  background: #d0e8f5; /* 写真がない時の仮背景（水彩に合う淡い青） */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 25px;
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+/* ↓ このブロックを新規追加 */
+.works_img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+.works_img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 作品名 */
+.works_name {
+  font-family: 'Noto Serif JP', serif;
+  color: #444;
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* 説明文 */
+.works_text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  line-height: 2;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* 制作期間・使用ツール */
+.works_info {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+/* 詳細ボタン */
+.works_btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: 'Noto Serif JP', serif;
+  transition: 0.3s;
+}
+.works_btn_div{
+   text-align: center;
+  margin-top: 20px; /* 余白が欲しければ追加 */
+}
+.works_btn:hover {
+  opacity: 0.8;
+}
+.works_section {
+  padding: 50px 20px;
+  text-align: center;
+}
+.skill_section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.skill_title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.skill_card {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  text-align: left;
+}
+
+.skill_name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.skill_text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  line-height: 2;
+  color: #555;
+}
+.contact_section {
+  padding: 80px 15px;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.contact_title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.contact_text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* iframe を包むボックス：スマホは横幅100%でOK */
+.contact_form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* iframe 自体もスマホでは横幅100%にする */
+.contact_form iframe {
+  width: 100% !important;
+  height: 1100px; /* フォームが長いのでこのままでOK */
+  border: none;
+}
+
+.footer {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.footer_icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 6px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_icon img {
+  width: 35px;
+  height: 35px;
+}
+
+.footer_copy {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #7ec8e3;
+}
+/* セクションタイトル（ABOUT / WORKS / SKILL / CONTACT） */
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  color: #333;
+}
+/* 本文（説明文） */
+p {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px;
+  line-height: 2;
+  color: #555;
+}
+
+/* 小タイトル（名前・作品名など） */
+h3, .works_name, .skill_name, .about_name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  color: #444;
+}
+
+/* ボタン */
+a, button {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+}
+/* =========================
+   PC版
+========================= */
+@media screen and (min-width: 1230px) {
+
+/* ハンバーガー非表示 */
+  .menu-btn {
+    display: none;
+  }
+  .header_logo_div {
+    position: absolute;
+    top: 20px;
+    left: 40px;     /* ← ロゴを左に固定 */
+    transform: none; /* ← 中央配置を解除 */
+    text-align: left;
+  }
+    .logo_word {
+    font-size: 26px;
+    letter-spacing: 1.2px;
+  }
+   /* InstagramアイコンはPC版では非表示 */
+  .sns_header {
+    display: none;
+  }
+   /* SNSアイコン */
+  .sns_header img {
+    width: 30px;
+  }
+    /* nav を横並びにする（スマホ設定を完全解除） */
+  .nav {
+    position: static !important;      /* 固定解除 */
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    opacity: 1 !important;            /* 透明解除 */
+    transform: none !important;       /* 下にずれるのを解除 */
+    pointer-events: auto !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+
+    display: flex !important;         /* 横並びにする */
+    align-items: center !important;
+    justify-content: flex-end !important; /* ← 右側に寄せる */
+    gap: 60px !important;
+  }
+  .nav a {
+    opacity: 1 !important;
+    transform: none !important;
+    border-bottom: none !important;
+  }
+  /* ul を横並びに */
+  .nav ul {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav ul li {
+    list-style: none;
+  }
+
+  /* PC版メニューのリンク */
+  .nav ul li a {
+    color: #7ec8e3;
+    font-size: 18px;
+    letter-spacing: 1.2px;
+    text-decoration: none;
+    position: relative;
+  }
+
+  /* ★ 中央から左右へ伸びる点線アニメーション */
+  .nav ul li a::after {
+    content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #7ec8e3, #bfe7f2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease-out;
+  }
+
+  .nav ul li a:hover::after {
+     transform: scaleX(1);
+  }
+  /* 文字の大きさ */
+  .hero_text{
+    font-size: 40px;
+    color: #f2f2f2;
+    line-height: 1.6;
+    font-weight: 300;
+    top: 45%;
+  }
+    .index_hero_img {
+    height: 70vh; /* ← ここを 60〜75vh で調整可能 */
+  }
+  /* ABOUT タイトル */
+  .about_title {
+    font-size: 34px;      /* ← 32px → 34px にして存在感UP */
+    margin-bottom: 60px;  /* ← 余白を少し広げて上品に */
+  }
+
+  /* 名前 */
+  .about_name {
+    font-size: 24px;      /* ← 20px → 24px にして読みやすく */
+    margin-bottom: 35px;
+  }
+
+  /* 本文（経歴） */
+  .about_text {
+    font-size: 17px;      /* ← 16px → 17px にして読みやすく */
+    line-height: 2.1;     /* ← PCでは少し広めが上品 */
+    max-width: 750px;     /* ← PCでは横幅を少し広げると読みやすい */
+  }
+
+  /* 最初の段落（about_text_a） */
+  .about_text_a {
+    margin-bottom: 25px;  /* ← 余白を少し広げて整える */
+    font-size: 17px;
+  }
+
+  /* 丸アイコン（帽子） */
+  .about_icon {
+    width: 200px;         /* ← PCでは少し大きくするとバランスが良い */
+    height: 200px;
+    margin-bottom: 40px;
+  }
+
+ /* WORKS タイトル */
+  .works_title {
+    font-size: 36px;        /* ← 34px → 36px にして存在感UP */
+    margin-bottom: 70px;    /* ← 余白を広げて上品に */
+  }
+
+  /* 作品名 */
+  .works_name {
+    font-size: 26px;        /* ← 24px → 26px にして読みやすく */
+    margin-bottom: 28px;
+  }
+
+  /* 説明文 */
+  .works_text {
+    font-size: 18px;        /* ← 17px → 18px にして読みやすく */
+    line-height: 2.2;       /* ← PCでは少し広めが上品 */
+    margin-bottom: 40px;
+  }
+
+  /* 制作期間・使用ツール */
+  .works_info {
+    font-size: 17px;        /* ← 少しだけ大きく */
+    line-height: 2.0;
+    margin-bottom: 40px;
+  }
+
+  /* カード全体の横幅を少し広げると読みやすい */
+  .works_card {
+    max-width: 750px;       /* ← 700px → 750px にしてPCでの読みやすさUP */
+  }
+   /* SKILL タイトル */
+  .skill_title {
+    font-size: 34px;        /* ← 存在感UP（ABOUT・WORKSと統一） */
+    margin-bottom: 60px;    /* ← 余白を広げて上品に */
+  }
+
+  /* スキル名 */
+  .skill_name {
+    font-size: 24px;        /* ← PC版で読みやすいサイズ */
+    margin-bottom: 20px;
+  }
+
+  /* 説明文 */
+  .skill_text {
+    font-size: 17px;        /* ← PC版で読みやすい */
+    line-height: 2.1;       /* ← 上品で静かな印象 */
+    margin-bottom: 40px;
+  }
+
+  /* カード幅を広げる（PC版で読みやすく） */
+  .skill_card {
+    max-width: 700px;       /* ← 600px → 700px にして余裕を持たせる */
+    margin-bottom: 60px;
+  }
+  /* CONTACT タイトル */
+  .contact_title {
+    font-size: 34px;
+    margin-bottom: 40px;
+  }
+
+  /* CONTACT 説明文 */
+  .contact_text {
+    font-size: 17px;
+    line-height: 2;
+    margin-bottom: 60px;
+  }
+
+  /* FOOTER コピーライト */
+  .footer_copy {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* =========================
+   タブレット版
+========================= */
+@media screen and (min-width: 768px) and (max-width: 1230px) {
+ /* ロゴ */
+  .logo_word {
+    font-size: 24px;      /* ← スマホより少し大きく */
+    letter-spacing: 1px;  /* ← 上品に見える */
+  }
+
+  /* メニュー */
+  .nav ul li a {
+    font-size: 50px;      /* ← 読みやすく、上品 */
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  /* SNSアイコン */
+  .sns_header img {
+    width: 40px;          /* ← 少し大きくして視認性UP */
+  }
+
+  /* ハンバーガーメニュー（必要なら） */
+  .menu-btn span {
+    height: 3px;          /* 線を少し太く */
+  }
+  /* Hero テキスト */
+  .hero_text {
+    font-size: 24px;        /* ← スマホより少し大きく */
+    line-height: 1.9;       /* ← 上品で柔らかい */
+  }
+
+  /* ABOUT タイトル */
+  .about_title {
+    font-size: 30px;        /* ← SKILL / CONTACT と統一 */
+    margin-bottom: 40px;
+  }
+
+  /* ABOUT 名前 */
+  .about_name {
+    font-size: 20px;        /* ← 読みやすく、上品 */
+    margin-bottom: 25px;
+  }
+
+  /* ABOUT 本文 */
+  .about_text {
+    font-size: 16px;        /* ← スマホより1px大きく */
+    line-height: 1.9;       /* ← タブレットは余白広めが美しい */
+    max-width: 700px;       /* ← 読みやすい幅に調整 */
+    margin: 0 auto;         /* ← 中央揃えで上品に */
+  }
+/* WORKS タイトル */
+  .works_title {
+    font-size: 30px;
+    margin-bottom: 45px;
+  }
+
+  /* 作品名 */
+  .works_name {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* 作品説明文 */
+  .works_text {
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+
+  /* 制作情報 */
+  .works_info p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* 詳細ボタン */
+  .works_btn {
+    font-size: 16px;
+    padding: 12px 28px;
+  }
+ /* SKILL タイトル */
+  .skill_title {
+    font-size: 30px;
+    margin-bottom: 45px;
+  }
+
+  /* SKILL 名 */
+  .skill_name {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+  /* SKILL 説明文 */
+  .skill_text {
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+
+  /* SKILL カード幅 */
+  .skill_card {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-left: 100px;
+  }
+
+  /* CONTACT タイトル */
+  .contact_title {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  /* CONTACT 説明文 */
+  .contact_text {
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 50px;
+  }
+
+  /* FOOTER コピーライト */
+  .footer_copy {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  /* FOOTER アイコン */
+  .footer_icon img {
+    width: 28px;
+    height: 28px;
+  }
+  }
+ 
+
+
