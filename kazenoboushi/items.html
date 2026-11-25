@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅の帽子</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+    <section class="hamburger_menu">
+
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="header_logo_div">
+            <a href="index.html" class="site_logo">旅の帽子</a>
+        </div>
+
+        <div class="header_cart_div">
+            <a href="cart.html" class="site_cart"><img src="img/cart_img.png" alt="カート"></img></a>
+        </div>
+        
+    </section>
+
+     <!-- ★★★ PC専用メニューはここに置く ★★★ -->
+    <div class="pc_menu">
+        <a href="about.html">私たちについて</a>
+        <a href="store.html">店舗情報</a>
+        <a href="items.html">商品一覧</a>
+    </div>
+
+
+    <nav class="nav">
+        <div class="nav-bg"></div>  <!-- ★メニュー内部を明るく保つ白背景 -->
+        <p class="nav_title">メニュー</p>
+        <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="about.html">私たちについて</a></li>
+            <li><a href="store.html">店舗情報</a></li>
+            <li><a href="items.html">商品一覧</a></li>
+            <li><a href="cart.html">カート</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div> <!-- ★背景だけ暗くする黒幕 -->
+</header>
+<main class="items">
+
+    <section class="items_h1 fadein">
+        <h1>商品一覧</h1>
+        <p>風に触れた記憶を、そっと形にした帽子。</p>
+    </section>
+
+    <section class="items_list">
+
+        <div class="items_item scrollin">
+            <a href="sunahama.html"><img src="img/sunahama.jpg" alt="すなはま"></a>
+            <p class="items_name">すなはま</p>
+            <p class="items_price">¥10,000</p>
+
+            <a href="sunahama.html" class="items_btn">詳細ページへ</a>
+        </div>
+
+        <div class="items_item scrollin">
+            <a href="umi.html"><img src="img/umi.jpg" alt="うみ"></a>
+            <p class="items_name">うみ</p>
+            <p class="items_price">¥10,000</p>
+
+            <a href="umi.html" class="items_btn">詳細ページへ</a>
+        </div>
+
+        <div class="items_item scrollin">
+            <a href="omoide.html"><img src="img/omoide.jpg" alt="おもいで"></a>
+            <p class="items_name">おもいで</p>
+            <p class="items_price">¥10,000</p>
+
+            <a href="omoide.html" class="items_btn">詳細ページへ</a>
+        </div>
+
+    </section>
+
+</main>
+<footer>
+  <p class="footer_logo">旅の帽子</p>
+  <p class="footer_copy">© 2024 tabi no boushi</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗情報</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+    <section class="hamburger_menu">
+
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="header_logo_div">
+            <a href="index.html" class="site_logo">旅の帽子</a>
+        </div>
+
+        <div class="header_cart_div">
+            <a href="cart.html" class="site_cart"><img src="img/cart_img.png" alt="カート"></img></a>
+        </div>
+        
+    </section>
+
+     <!-- ★★★ PC専用メニューはここに置く ★★★ -->
+    <div class="pc_menu">
+        <a href="about.html">私たちについて</a>
+        <a href="store.html">店舗情報</a>
+        <a href="items.html">商品一覧</a>
+    </div>
+
+
+    <nav class="nav">
+        <div class="nav-bg"></div>  <!-- ★メニュー内部を明るく保つ白背景 -->
+        <p class="nav_title">メニュー</p>
+        <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="about.html">私たちについて</a></li>
+            <li><a href="store.html">店舗情報</a></li>
+            <li><a href="items.html">商品一覧</a></li>
+            <li><a href="cart.html">カート</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div> <!-- ★背景だけ暗くする黒幕 -->
+</header>
+<main class="store">
+    <section class="store_h1 fadein">
+        <h1>店舗情報</h1>
+        <p>
+            旅の余韻をそっと届ける場所。<br>
+            静かな風が通る、私たちの店です。
+        </p>
+    </section>
+
+    <section class="store_img">
+        <img src="img/store_photo.jpg" alt="store_photo" class="fadein">
+    </section>
+
+    <section class="store_info scrollin">
+        <h2>基本情報</h2>
+        <p>住所：福岡県〇〇市〇〇区〇〇 1-2-3</p>
+        <p>営業時間：10:00〜18:00</p>
+        <p>定休日：火曜日</p>
+        <p>電話番号：000-0000-0000</p>
+        <p>アクセス：〇〇駅より徒歩8分</p>
+    </section>
+
+    <section class="google_map scrollin">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15809.518265770354!2d130.4191693149884!3d33.59124389718982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191c7e6f9b375%3A0x2ee22b3d45b98b90!2z5Y2a5aSa6aeF!5e0!3m2!1sja!2sjp!4v1785941166632!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+
+    <section class="store_btn fadein">
+        <a href="index.html" class="btn">トップページに戻る</a>
+    </section>
+</main>
+
+<footer>
+  <p class="footer_logo">旅の帽子</p>
+  <p class="footer_copy">© 2024 tabi no boushi</p>
+</footer>
+
+</body>
+</html>

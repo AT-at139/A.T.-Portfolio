@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おもいで — 旅の余韻をそっと包んで</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+    <section class="hamburger_menu">
+
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="header_logo_div">
+            <a href="index.html" class="site_logo">旅の帽子</a>
+        </div>
+
+        <div class="header_cart_div">
+            <a href="cart.html" class="site_cart"><img src="img/cart_img.png" alt="カート"></img></a>
+        </div>
+        
+    </section>
+
+     <!-- ★★★ PC専用メニューはここに置く ★★★ -->
+    <div class="pc_menu">
+        <a href="about.html">私たちについて</a>
+        <a href="store.html">店舗情報</a>
+        <a href="items.html">商品一覧</a>
+    </div>
+
+
+    <nav class="nav">
+        <div class="nav-bg"></div>  <!-- ★メニュー内部を明るく保つ白背景 -->
+        <p class="nav_title">メニュー</p>
+        <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="about.html">私たちについて</a></li>
+            <li><a href="store.html">店舗情報</a></li>
+            <li><a href="items.html">商品一覧</a></li>
+            <li><a href="cart.html">カート</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div> <!-- ★背景だけ暗くする黒幕 -->
+</header>
+<main class="item_detail">
+
+    <section class="item_detail_img fadein">
+        <img src="img/omoide.jpg" alt="おもいで">
+    </section>
+
+    <section class="item_detail_info scrollin">
+        <h1 class="item_name">おもいで</h1>
+        <p class="item_price">¥10,000</p>
+
+        <p class="item_text">
+            淡い光の中でふとよみがえる、小さな旅の記憶。<br>
+            その余韻だけをそっと編みとったような、静かな白のハットです。
+        </p>
+
+        <div class="item_spec">
+            <p>サイズ：57cm（調整可能）</p>
+            <p>つばの長さ：6cm</p>
+            <p>高さ：11cm</p>
+            <p>素材：ペーパー 80％・ポリエステル 20％</p>
+            <p>生産国：日本</p>
+        </div>
+        
+        <!-- ★ここに数量選択を追加 -->
+<div class="item_quantity_box">
+    <label for="itemQty">数量：</label>
+    <select id="itemQty" max="3">
+        <option value="1">1個</option>
+        <option value="2">2個</option>
+        <option value="3">3個</option>
+    </select>
+</div>
+
+
+
+<p class="item_notice">※数量は最大3個まで選択できます。</p>
+        <a href="cart.html" class="item_cart_btn" id="addCartBtn">カートに入れる</a>
+    </section>
+
+</main>
+<footer>
+  <p class="footer_logo">旅の帽子</p>
+  <p class="footer_copy">© 2024 tabi no boushi</p>
+</footer>
+
+</body>
+</html>

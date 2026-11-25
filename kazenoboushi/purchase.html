@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご購入手続き</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+    <section class="hamburger_menu">
+
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="header_logo_div">
+            <a href="index.html" class="site_logo">旅の帽子</a>
+        </div>
+
+        <div class="header_cart_div">
+            <a href="cart.html" class="site_cart"><img src="img/cart_img.png" alt="カート"></a>
+        </div>
+        
+    </section>
+
+     <!-- ★★★ PC専用メニューはここに置く ★★★ -->
+    <div class="pc_menu">
+        <a href="about.html">私たちについて</a>
+        <a href="store.html">店舗情報</a>
+        <a href="items.html">商品一覧</a>
+    </div>
+
+
+    <nav class="nav">
+        <div class="nav-bg"></div>  <!-- ★メニュー内部を明るく保つ白背景 -->
+        <p class="nav_title">メニュー</p>
+        <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="about.html">私たちについて</a></li>
+            <li><a href="store.html">店舗情報</a></li>
+            <li><a href="items.html">商品一覧</a></li>
+            <li><a href="cart.html">カート</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div> <!-- ★背景だけ暗くする黒幕 -->
+</header>
+
+<main class="purchase">
+
+  <h1 class="purchase_title">ご購入手続き</h1>
+
+  <section class="purchase_form">
+
+    <label>お名前</label>
+    <input type="text" id="userName">
+
+    <label>郵便番号</label>
+    <input type="text" id="userZip">
+
+    <label>住所</label>
+    <input type="text" id="userAddress">
+
+    <label>電話番号</label>
+    <input type="text" id="userTel">
+
+    <label>メールアドレス</label>
+    <input type="email" id="userMail">
+
+  </section>
+
+  <section class="payment_section">
+
+  <h2 class="payment_title">お支払い方法</h2>
+
+  <div class="payment_options">
+
+    <label>
+      <input type="radio" name="payment" value="credit" checked>
+      クレジットカード
+    </label>
+
+    <label>
+      <input type="radio" name="payment" value="bank">
+      銀行振込
+    </label>
+
+    <label>
+      <input type="radio" name="payment" value="cod">
+      代金引換
+    </label>
+
+  </div>
+
+  <button id="confirmBtn" class="confirm_btn">確認へ進む</button>
+  <a href="cart.html" class="purchase_back_btn">カートに戻る</a>
+  </section>
+</main>
+
+<footer>
+  <p class="footer_logo">旅の帽子</p>
+  <p class="footer_copy">© 2024 tabi no boushi</p>
+</footer>
+
+</body>
+</html>

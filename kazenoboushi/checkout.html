@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注文内容の確認</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+    <section class="hamburger_menu">
+
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="header_logo_div">
+            <a href="index.html" class="site_logo">旅の帽子</a>
+        </div>
+
+        <div class="header_cart_div">
+            <a href="cart.html" class="site_cart"><img src="img/cart_img.png" alt="カート"></img></a>
+        </div>
+        
+    </section>
+
+     <!-- ★★★ PC専用メニューはここに置く ★★★ -->
+    <div class="pc_menu">
+        <a href="about.html">私たちについて</a>
+        <a href="store.html">店舗情報</a>
+        <a href="items.html">商品一覧</a>
+    </div>
+
+
+    <nav class="nav">
+        <div class="nav-bg"></div>  <!-- ★メニュー内部を明るく保つ白背景 -->
+        <p class="nav_title">メニュー</p>
+        <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="about.html">私たちについて</a></li>
+            <li><a href="store.html">店舗情報</a></li>
+            <li><a href="items.html">商品一覧</a></li>
+            <li><a href="cart.html">カート</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div> <!-- ★背景だけ暗くする黒幕 -->
+</header>
+<main class="order_confirm">
+
+  <h1 class="confirm_title">注文内容の確認</h1>
+
+  <section class="confirm_info">
+    <p id="confirmName"></p>
+    <p id="confirmZip"></p>
+    <p id="confirmAddress"></p>
+    <p id="confirmTel"></p>
+    <p id="confirmMail"></p>
+    <p id="confirmPayment"></p>
+  </section>
+
+  <section class="confirm_item">
+    <img id="confirmImg" alt="">
+    <p id="confirmItemName"></p>
+    <p id="confirmItemPrice"></p>
+    <p id="confirmItemQty"></p>
+    <p id="confirmItemSubtotal"></p>
+  </section>
+
+  <section class="confirm_total">
+    <p id="confirmTotalPrice"></p>
+    <p id="confirmShipping"></p>
+    <p id="confirmFinalTotal"></p>
+
+     <p class="shipping_notice">※合計が20,000円以上のご注文は、送料が無料になります。</p>
+  </section>
+
+  <button class="confirm_btn">注文を確定する</button>
+
+<!-- ★ 新しく追加するボタン -->
+<a href="purchase.html" class="purchase_back_btn2">ご購入手続きに戻る</a>
+
+  <a href="cart.html" class="back_btn">カートに戻る</a>
+
+</main>
+
+<footer>
+  <p class="footer_logo">旅の帽子</p>
+  <p class="footer_copy">© 2024 tabi no boushi</p>
+</footer>
+
+</body>
+</html>
