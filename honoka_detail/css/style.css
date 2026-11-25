@@ -1,0 +1,753 @@
+@charset "utf-8";
+body{
+  background-color: #f7f7f7;
+  font-family: 'Noto Serif JP', serif;
+  color: #333;
+}
+/* ヘッダー */
+header {
+  height: 70px; /* ← 好きな高さに調整 */
+
+  position: fixed;   /* ← スクロールしてもついてくる */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 7000;     /* ← メニューや画像より前に出す */
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* ハンバーガーメニュー */
+.menu-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  z-index: 9000;
+}
+.menu-btn span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #7ec8e3;
+  margin: 6px 0;
+  transition: .4s;
+}
+
+/* メニュー本体（初期状態） */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+ background-color: #f7f7f7;
+
+  opacity: 0;                 /* 透明 */
+  transform: translateY(30px); /* 下に少しずらす */
+  pointer-events: none;        /* 閉じている間はクリック不可 */
+  transition: 1.2s ease;       /* ゆっくり浮かぶ */
+
+  padding-top: 100px;
+}
+/* 開いたとき */
+.nav.open {
+  opacity: 1;                 /* 表示 */
+  transform: translateY(0);   /* 元の位置へ */
+  pointer-events: auto;       /* クリック可能に */
+}
+
+/* メニュー内のリンク */
+.nav a {
+  color: #7ec8e3;
+  font-size: 25px;
+  border-bottom: 2px dotted #7ec8e3;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 30px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.2s ease;
+
+  width: 250px;   /* ← 線の長さをここで調整 */
+  margin: 0 auto; /* ← 中央に配置 */
+  padding-bottom: 10px;
+}
+
+/* 開いたときにふわっと */
+.nav.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Instagram */
+.sns_header img {
+  width: 40px;
+  margin: 40px auto 0;
+  display: block;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.2s ease;
+}
+.sns_header a {
+  border-bottom: none !important;
+}
+.logo_word{
+  font-size: 30px;
+  color: #7ec8e3;
+  font-family: 'Parisienne', cursive;
+}
+.header_logo_div {
+  position: absolute;
+  top: 20px;              /* ← 縦位置はこの数値で調整 */
+  left: 50%;              /* ← 横方向の中央へ */
+  transform: translateX(-50%); /* ← 要素の幅の半分だけ戻す（中央揃え） */
+  text-align: center;
+}
+
+/* 順番にふわっと浮かぶ */
+.nav.open a:nth-child(1) { transition-delay: .2s; }
+.nav.open a:nth-child(2) { transition-delay: .3s; }
+.nav.open a:nth-child(3) { transition-delay: .4s; }
+.nav.open a:nth-child(4) { transition-delay: .5s; }
+.nav.open a:nth-child(5) { transition-delay: .6s; }
+.nav.open a:nth-child(6) { transition-delay: .7s; }
+
+/* Instagramアイコンも浮かぶ */
+.sns_header img {
+  width: 40px;
+  margin: 40px auto 0;
+  display: block;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1.2s ease;
+}
+
+.nav.open .sns_header img {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: .6s;
+}
+/* ハンバーガー → × のアニメーション */
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
+
+.footer {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.footer_icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 6px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_icon img {
+  width: 35px;
+  height: 35px;
+}
+
+.footer_copy {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #7ec8e3;
+}
+/* 全体 */
+.work_detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 20px 0px;
+  text-align: center;
+}
+
+/* タイトル */
+.work_detail_title {
+  font-size: 29px;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* 写真 */
+.work_detail_img img {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  display: block;
+}
+
+/* 詳細ページの画像 */
+.work_detail_img img,
+.section_img img,
+.work_pages_list_img img,
+.tool_img img,
+.worldview_img img {
+  transition: transform 0.4s ease;
+  display: block;
+  width: 100%;
+}
+
+.work_detail_img img:hover,
+.section_img img:hover,
+.work_pages_list_img img:hover,
+.tool_img img:hover,
+.worldview_img img:hover {
+  transform: scale(1.05);
+}
+
+/* ボタン */
+.work_detail_btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 17px;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 50px;
+  transition: 0.3s ease;
+}
+.work_detail_btn:hover {
+  background: #555; /* ← 上品なグレー */
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* リード文 */
+.work_detail_lead {
+  font-size: 17px;
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+/* 制作情報 */
+.work_detail_info p {
+  font-size: 16px;
+  line-height: 2;
+}
+
+/* コンセプト見出し */
+.work_detail_concept_title {
+  font-size: 26px;
+  margin: 100px 0 30px;
+}
+
+/* コンセプト本文 */
+.work_detail_concept {
+  font-size: 17px;
+  line-height: 2.0;
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+}
+/* 全体 */
+.work_detail_points {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0px 20px;
+
+}
+
+/* 見出し */
+.work_points_title,
+.work_pages_title,
+.work_tools_title {
+  font-size: 26px;
+  margin-bottom: 50px;
+  margin-top: 100px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* リスト共通 */
+.work_points_list,
+.work_pages_list,
+.work_tools_list {
+  font-size: 17px;
+  line-height: 2.0;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* リスト項目 */
+.work_points_list li,
+.work_pages_list li,
+.work_tools_list li {
+  margin-bottom: 12px;
+}
+.work_pages_list_div {
+  text-align: center; /* 全体を中央揃え */
+}
+
+.work_pages_list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.work_pages_list li {
+  display: block;      /* li をブロック化して中央に */
+  margin-bottom: 12px; /* 上品な余白 */
+}
+.work_pages_list li a {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 17px;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 50px;
+  transition: 0.3s ease;
+}
+
+/* ホバーアニメーション */
+.work_pages_list li a:hover {
+  background: #555;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(126,200,227,0.25);
+}
+
+/* 全体 */
+.work_detail_points {
+  max-width: 800px;
+  margin: 0 auto;
+    margin-top: 100px;
+}
+
+/* 大見出し */
+.work_points_title {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
+/* 各ブロック */
+.work_points_block {
+  margin-bottom: 60px;
+}
+
+/* 小見出し */
+.work_points_subtitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* 本文 */
+.work_points_block p {
+  font-size: 17px;
+  line-height: 2.1;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+/* セクション全体 */
+.work_detail_worldview {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0px 20px;
+  padding-bottom: 80px;
+}
+
+/* 見出し */
+.work_worldview_title {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
+/* 本文 */
+.work_worldview_text {
+  font-size: 17px;
+  line-height: 2.1;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  text-align: left;
+}
+/* ← この下に追加すると綺麗にまとまります */
+h3 {
+  scroll-margin-top: 90px;
+}
+
+/* 画像挿入 */
+.concept_img img {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  display: block;
+  border-radius: 6px;
+}
+.sp_ui_img img {
+  height: 50%;
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  display: block;
+  border-radius: 6px;
+}
+.work_pages_list_img img {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 6px;
+}
+.work_pages_list_img img.pc {
+  display: none;
+}
+.work_pages_list_img img.sp {
+  display: block;
+  max-height: 100%; /* ← 好きな高さに調整できます */
+  width: 70%;
+    object-fit: cover; /* ← トリミングして綺麗に収める */
+}
+
+.work_tools_list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.work_tools_list li {
+  margin-bottom: 28px;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #4a4a4a;
+}
+
+.tool_img img {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  display: block;
+}
+.worldview_img img {
+  width: 50%;
+  height: 50%;
+  
+  margin: 0 auto 30px;
+  display: block;
+  border-radius: 6px;
+}
+/* モーダルの背景 */
+.img_modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0,0,0,0.6); /* 上品な半透明 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 拡大画像 */
+.img_modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+/* ×ボタン */
+.img_modal_close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   PC版
+========================= */
+@media screen and (min-width: 1184px) {
+
+/* ハンバーガー非表示 */
+  .menu-btn {
+    display: none;
+  }
+  .header_logo_div {
+    position: absolute;
+    top: 20px;
+    left: 40px;     /* ← ロゴを左に固定 */
+    transform: none; /* ← 中央配置を解除 */
+    text-align: left;
+  }
+    .logo_word {
+    font-size: 26px;
+    letter-spacing: 1.2px;
+  }
+   /* InstagramアイコンはPC版では非表示 */
+  .sns_header {
+    display: none;
+  }
+   /* SNSアイコン */
+  .sns_header img {
+    width: 30px;
+  }
+    /* nav を横並びにする（スマホ設定を完全解除） */
+  .nav {
+    position: static !important;      /* 固定解除 */
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    opacity: 1 !important;            /* 透明解除 */
+    transform: none !important;       /* 下にずれるのを解除 */
+    pointer-events: auto !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+
+    display: flex !important;         /* 横並びにする */
+    align-items: center !important;
+    justify-content: flex-end !important; /* ← 右側に寄せる */
+    gap: 60px !important;
+  }
+  .nav a {
+    opacity: 1 !important;
+    transform: none !important;
+    border-bottom: none !important;
+  }
+  .nav ul {
+    display: flex;
+    gap: 10px; /* 少し狭めて上品に */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav ul li {
+    list-style: none;
+  }
+
+  /* PC版メニューのリンク */
+  .nav ul li a {
+    color: #7ec8e3;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    position: relative;
+    
+    max-width: 150px;
+  }
+
+  /* ★ 中央から左右へ伸びる点線アニメーション */
+  .nav ul li a::after {
+    content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #7ec8e3, #bfe7f2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease-out;
+  }
+
+  .nav ul li a:hover::after {
+     transform: scaleX(1);
+  }
+  
+  /* FOOTER コピーライト */
+  .footer_copy {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+   /* 画像挿入 */
+.sp_ui_img img{
+  width: 40%;
+  height: 40%;
+}
+  .work_pages_list_img{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .work_pages_list_img img:nth-child(1) { 
+    display: inline-block; 
+    width: 48%; 
+    margin-right: 2%; 
+  }
+  .work_pages_list_img img:nth-child(2) { 
+    display: inline-block; 
+    width: 48%; 
+    margin-right: 0; 
+  
+}
+.work_pages_list_img img.pc {
+    display: inline-block;
+    height: 60%;
+    width: 60%;
+    margin-right: 2%;
+    vertical-align: top;
+  }
+  .work_pages_list_img img.pc:last-child {
+    margin-right: 0;
+  }
+
+  .work_pages_list_img img.sp {
+    display: block;
+    max-height: 100%; /* ← 好きな高さに調整できます */
+  width: 30%;
+    object-fit: cover; /* ← トリミングして綺麗に収める */
+  }
+  /* 使用ツールセクションの画像を中央揃え */
+.tool_img {
+  text-align: center;       /* ← 画像を中央に配置 */
+  margin-bottom: 12px;      /* ← 画像と文章の距離を一定に */
+}
+
+.tool_img img {
+  width: 100%;
+  max-width: 600px;         /* ← PC版で大きすぎないように調整 */
+  border-radius: 6px;       /* ← 上品な角丸 */
+  display: inline-block;    /* ← 中央揃えを確実にする */
+}
+
+/* リスト全体の調整 */
+.work_tools_list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.work_tools_list li {
+  margin-bottom: 32px;      /* ← 各項目の余白を統一 */
+  line-height: 1.8;
+  font-size: 16px;
+}
+}
+
+/* =========================
+   タブレット版
+========================= */
+@media screen and (min-width: 768px) and (max-width: 1184px) {
+ /* ロゴ */
+  .logo_word {
+    font-size: 28px;      /* ← スマホより少し大きく */
+    letter-spacing: 1px;  /* ← 上品に見える */
+  }
+
+  /* メニュー */
+  .nav ul li a {
+    font-size: 35px;      /* ← 読みやすく、上品 */
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  /* SNSアイコン */
+  .sns_header img {
+    width: 40px;          /* ← 少し大きくして視認性UP */
+  }
+
+  /* ハンバーガーメニュー（必要なら） */
+  .menu-btn span {
+    height: 3px;          /* 線を少し太く */
+  }
+  
+  /* FOOTER コピーライト */
+  .footer_copy {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  /* FOOTER アイコン */
+  .footer_icon img {
+    width: 28px;
+    height: 28px;
+  }
+    .tool_img {
+    text-align: center;
+  }
+
+  .tool_img img {
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+
+ 
+  }
+ 
+
+
+
